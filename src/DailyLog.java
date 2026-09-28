@@ -38,10 +38,13 @@ color group, along with the total time the care attendant spent with the various
     System: Visual Studio Code, Windows 10
     Author: C. F
 */
+
+import java.util.Scanner;
 public class DailyLog {
     public static void main(String[] args) throws Exception {
         
         //DECLARATIONS *Make sure to also consider all variables that will keep tally and initialize to zero
+        Scanner input = new Scanner(System.in);
 
         //WELCOME MESSAGE
         System.out.println("Welcome to the MPLS care attendant daily log program.  This program will allow you to enter a care attendant id and produce a log for the dogs under the attendant's care.");
@@ -56,17 +59,74 @@ public class DailyLog {
         System.out.println("Enter 44 for Mya Lynn");
 
         //PRIMER
+        final int CharlesId = 11;
+        final int AlexanderId = 22;
+        final int IsaacId = 33;
+        final int LynnId = 44;
+    
 
-
-        //Enfore that only 11, 22, 33, 44 and sentinel value can be entered
-
+        System.out.println("To get started, please enter the care attendant ID from the list above");
+        System.out.print("Enter ID #: ");
+        int attendantId = input.nextInt();
 
         //Looping structure that allow for continous iteration and checks against sentinel value
+        while(attendantId != 11 && attendantId != 22 && attendantId != 33 && attendantId != 44) {
+            System.out.println("Invalid ID number. Please enter a valid care attendant ID from the list above.");
+            System.out.print("Enter ID #: ");
+            attendantId = input.nextInt();
+        }
 
 
-                //Determine which dogs to display based on attendant id number 
+        //Determine which dogs to display based on attendant id number 
+        System.out.println("Dogs available for this attendant:");
 
+        boolean showBlue;
+        boolean showRed;
+        boolean showGreen;
+        boolean showYellow;
 
+        //showBlue
+        if(attendantId == CharlesId || attendantId == IsaacId){
+            showBlue = true;
+        }
+        else showBlue = false;
+
+        //showRed
+        if(attendantId == CharlesId || attendantId == LynnId){
+            showRed = true;
+        }
+        else showRed = false;
+
+        //showGreen
+        if(attendantId == AlexanderId || attendantId == LynnId){
+            showGreen = true;
+        }
+        else showGreen = false;
+
+        //showYellow
+        if(attendantId == AlexanderId || attendantId == IsaacId){
+            showYellow = true;
+        }
+        else showYellow = false;
+        
+        //Determine which dogs to display based on attendant id number 
+        if (showRed == true) {
+            System.out.println("348 - Badger (RED)");
+            System.out.println("301 - Hoosier (RED)");
+            System.out.println("388 - Husker (RED)");
+            System.out.println("391 - Bucky (RED)");
+        }
+        if (showGreen == true) {
+            System.out.println("325 - Spartan (GREEN)");
+        }
+        if (showYellow == true) {
+            System.out.println("388 - Hawk (YELLOW)");
+            System.out.println("333 - Gopher (YELLOW)");
+        }
+        if (showBlue == true) {
+            System.out.println("362 - Nittany (BLUE)");
+            System.out.println("311 - Wolvey (BLUE)");
+        }
                 //Enforce that dog ID is an applicable number according to the chart
 
 
